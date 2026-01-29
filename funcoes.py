@@ -11,19 +11,22 @@ def cria_pecas():
     
     return pecas
 
-def inicia_jogo(num_jogadores, pecas):
-    pecas_copia = pecas.copy()
-    jogadores = {}
+def inicia_jogo(n_jogadores, pecas):
+    distribuicao = {}
+    posicao = 0
     
-    for i in range(num_jogadores):
-        jogadores[i] = []
-        for _ in range(7):
-            jogadores[i].append(pecas_copia.pop())
-    jogo = {
-        'jogadores': jogadores,
-        'monte': pecas_copia,
+    for i in range(n_jogadores):
+        mao = pecas[posicao : posicao + 7]
+        distribuicao[i] = mao
+        posicao += 7
+        
+    monte = pecas[posicao:]
+    
+    resultado = {
+        'jogadores': distribuicao,
+        'monte': monte,
         'mesa': []
     }
     
-    return jogo
+    return resultado
 

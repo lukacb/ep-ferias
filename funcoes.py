@@ -60,3 +60,25 @@ def posicoes_possiveis(mesa, pecas):
             
     return posicoes
 
+def adiciona_na_mesa(peca, mesa):
+    if len(mesa) == 0:
+        return [peca]
+    
+    esquerda = mesa[0][0]
+    direita = mesa[-1][1]
+    
+    if peca[0] == esquerda:
+        mesa.insert(0, [peca[1], peca[0]])
+        return mesa
+    elif peca[1] == esquerda:
+        mesa.insert(0, peca)
+        return mesa
+    elif peca[0] == direita:
+        mesa.append(peca)
+        return mesa
+    elif peca[1] == direita:
+        mesa.append([peca[1], peca[0]])
+        return mesa
+    
+    return mesa
+

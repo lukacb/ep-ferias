@@ -67,3 +67,20 @@ while verifica_ganhador(jogo['jogadores']) == -1:
                 jogo['jogadores'][0].append(jogo['monte'].pop(0))
             else:
                 print("Passando a vez...")
+
+    else:
+        print(f"Jogador {jogador_atual + 1} com {len(jogo['jogadores'][jogador_atual])} peça(s)")
+        possiveis_pc = posicoes_possiveis(jogo['mesa'], jogo['jogadores'][jogador_atual])
+        
+        if len(possiveis_pc) > 0:
+            indice_peca = possiveis_pc[0]
+            peca_pc = jogo['jogadores'][jogador_atual].pop(indice_peca)
+            jogo['mesa'] = adiciona_na_mesa(peca_pc, jogo['mesa'])
+            print(f"Colocou: [{peca_pc[0]}|{peca_pc[1]}]")
+        elif len(jogo['monte']) > 0:
+            jogo['jogadores'][jogador_atual].append(jogo['monte'].pop(0))
+            print("Pegou do monte.")
+        else:
+            print("Passando a vez.")
+            
+    jogador_atual = (jogador_atual + 1) % num_jogadores

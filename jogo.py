@@ -84,3 +84,9 @@ while verifica_ganhador(jogo['jogadores']) == -1:
             print("Passando a vez.")
             
     jogador_atual = (jogador_atual + 1) % num_jogadores
+
+vencedor = verifica_ganhador(jogo['jogadores'])
+if vencedor == 0:
+    print("\nParabéns! Você venceu!")
+else:
+    print(f"\nFim de jogo! O Jogador {vencedor + 1} venceu.")
